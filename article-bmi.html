@@ -63,24 +63,31 @@
 
     <script>
 
+        // nimmt Größe und Gewicht entgegen und gibt den BMI zurück
         function calculateBMI(height, weight) {
             const result = weight / (height * height);
             return result;
         }
 
+        // holt sich Bezug zu Element in HTML
         const button = document.querySelector("#calculate-button");
+        // Wenn ein Click auf den Button ausgeführt wird, soll folgende Funktion ausgeführt werden
         button.addEventListener("click", function () {
 
+            // holt sich Bezug zu Elementen in HTML
             const input_height = document.querySelector("#input-height");
             const input_weight = document.querySelector("#input-weight");
             const result_container = document.querySelector("#result");
 
+            // holt sich die Werte in den Eingabefeldern
             const height = input_height.value;
             const weight = input_weight.value;
-            
+
+            // Gibt Werte aus den Eingabefeldern an die BMI-Funktion und schreibt Ergebnis in Variable
             const result = calculateBMI(height, weight);
 
-            result_container.innerHTML = result;
+            // Gibt das Ergebnis der Berechnung auf der Seite aus.
+            result_container.innerHTML = "Sie haben einen BMI von " + result;
         })
 
     </script>
