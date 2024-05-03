@@ -58,3 +58,30 @@ article {
     padding: 1rem;
     margin-bottom: 1rem;
 }
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: auto;
+}
+
+.bmi-calculator {
+    display: flex;
+}
+
+.result {
+    border: 1px solid;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.input-wrapper {
+    margin: 1rem 0;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <img id="logo" src="./assets/logo.png" alt="" />
+      <h1 id="page-title">Healthy Stuff</h1>
+    </header>
+    <main class="wrapper">
+      <h2>BMI</h2>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt vitae
+        exercitationem ipsa animi eos? Sunt eos et, quia est tenetur, quae
+        ratione, illo iste architecto enim delectus voluptate ex cupiditate.
+      </p>
+
+      <div class="bmi-calculator">
+
+        <div class="form-inputs">
+            <div class="input-wrapper">
+                <label>
+                    Alter
+                    <input type="number" name="" id="input-age">
+                </label>
+            </div>
+            <div class="input-wrapper">
+                <label>
+                    Körpergröße
+                    <input type="number" name="" id="input-height">
+                </label>
+            </div>
+            <div class="input-wrapper">
+                <label>
+                    Gewicht
+                    <input type="number" name="" id="input-weight">
+                </label>
+            </div>
+            <div>
+                <button id="calculate-button">Berechnen</button>
+            </div>
+        </div>
+
+        <div id="result">
+            Sie haben ...
+        </div>
+
+      </div>
+
+
+    </main>
+    <footer>
+      <nav class="wrapper">
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </footer>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script>
+
+        function calculateBMI(height, weight) {
+            const result = weight / (height * height);
+            return result;
+        }
+
+        const button = document.querySelector("#calculate-button");
+        button.addEventListener("click", function () {
+
+            const input_height = document.querySelector("#input-height");
+            const input_weight = document.querySelector("#input-weight");
+            const result_container = document.querySelector("#result");
+
+            const height = input_height.value;
+            const weight = input_weight.value;
+            
+            const result = calculateBMI(height, weight);
+
+            result_container.innerHTML = result;
+        })
+
+    </script>
+
+  </body>
+</html>
