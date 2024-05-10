@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Tracker</title>
+  </head>
+  <body>
+    <div class="food-tracker">
+      <h2>Food-Tracker</h2>
+
+      <div class="form-inputs">
+        <div class="label-container">
+          <label for="">
+            Name
+            <input id="input_name" type="text" />
+          </label>
+        </div>
+        <div class="label-container">
+          <label>
+            Typ
+            <select name="" id="input_type">
+              <option value="Mahlzeit">Mahlzeit</option>
+              <option value="Junkfood">Junkfood</option>
+            </select>
+          </label>
+        </div>
+        <div class="label-container">
+          <label>
+            Menge
+            <input type="number" name="" id="input_amount" />
+          </label>
+        </div>
+        <button id="button_track-food">Tracken</button>
+      </div>
+
+      <div class="logbook">...</div>
+    </div>
+
+    <script>
+      const input_name = document.querySelector("#input_name");
+      const input_type = document.querySelector("#input_type");
+      const input_amount = document.querySelector("#input_amount");
+      const button = document.querySelector("#button_track-food");
+      const logbook = document.querySelector(".logbook");
+
+      function handleFoodTrack() {
+        const name = input_name.value;
+        const type = input_type.value;
+        const amount = input_amount.value;
+
+        const currentDate = new Date();
+        const timeOfTracking = currentDate.toLocaleString();
+
+        logbook.innerHTML = logbook.innerHTML + "<p>" + timeOfTracking + ", " + amount + ", " + type + ", " + name + "</p>";
+      }
+
+      button.addEventListener("click", handleFoodTrack);
+    </script>
+  </body>
+</html>
