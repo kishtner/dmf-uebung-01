@@ -51,6 +51,10 @@
             Sie haben ...
         </div>
 
+        <div class="rating">
+        </div>
+        
+
       </div>
 
 
@@ -77,19 +81,40 @@
         button.addEventListener("click", function () {
 
             // holt sich Bezug zu Elementen in HTML
+            const input_age = document.querySelector("#input-age");
             const input_height = document.querySelector("#input-height");
             const input_weight = document.querySelector("#input-weight");
             const result_container = document.querySelector("#result");
+            const rating_container = document.querySelector(".rating");
 
             // holt sich die Werte in den Eingabefeldern
             const height = input_height.value;
             const weight = input_weight.value;
+            const age = input_age.value;
+
+            if (age < 18) {
+              result_container.innerHTML = "Bitte verwenden Sie ein anderes Programm und lassen Sie ihr Kind in Ruhe!";
+              return;
+            } 
 
             // Gibt Werte aus den Eingabefeldern an die BMI-Funktion und schreibt Ergebnis in Variable
-            const result = calculateBMI(height, weight);
+            const bmi = calculateBMI(height, weight);
 
             // Gibt das Ergebnis der Berechnung auf der Seite aus.
-            result_container.innerHTML = "Sie haben einen BMI von " + result;
+            result_container.innerHTML = "Sie haben einen BMI von " + bmi;
+
+            if (bmi < 16) {
+              rating_container.innerHTML = "Sie haben kritisches Untergewicht."
+            } else if (bmi >= 16 && bmi < 18.5) {
+              rating_container.innerHTML = "Sie haben Untergewicht."
+            } else if (bmi >= 18.5 && bmi < 25) {
+              rating_container.innerHTML = "Sie haben Normalgewicht."
+            } else if (bmi >= 25 && bmi < 30) {
+              rating_container.innerHTML = "Sie haben leichtes Übergewicht."
+            } else {
+              rating_container.innerHTML = "Sie haben Übergewicht."
+            }
+            
         })
 
     </script>
