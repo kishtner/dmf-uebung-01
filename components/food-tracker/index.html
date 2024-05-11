@@ -38,23 +38,31 @@
     </div>
 
     <script>
+      // JS mit HTML-Elementen auf der Seite "verkabeln"
       const input_name = document.querySelector("#input_name");
       const input_type = document.querySelector("#input_type");
       const input_amount = document.querySelector("#input_amount");
       const button = document.querySelector("#button_track-food");
       const logbook = document.querySelector(".logbook");
 
+      // Funktion, die ausgeführt werden soll, wenn der Button zum Speichern einer Mahlzeit geclickt wird
       function handleFoodTrack() {
         const name = input_name.value;
         const type = input_type.value;
         const amount = input_amount.value;
 
+        // holt diverse Informationen zum aktuellen Zeitpunkt und Datum
         const currentDate = new Date();
+        // wandelt das aktuelle Datum und Zeit in einen String mit folgendem Format um: 11.05.2024 08:14:25
         const timeOfTracking = currentDate.toLocaleString();
 
-        logbook.innerHTML = logbook.innerHTML + "<p>" + timeOfTracking + ", " + amount + ", " + type + ", " + name + "</p>";
+        // speichert den alten Inhalt des Logbook in einer Variablen
+        const currentLogBook = logbook.innerHTML
+        // fügt den alten Inhalt und das gerade erfasste Mahlzeit aneinander und fügt es in das Logbook ein
+        logbook.innerHTML = currentLogBook + "<p>" + timeOfTracking + ", " + amount + ", " + type + ", " + name + "</p>";
       }
 
+      // Der Button "lauscht" auf clicks und führt die Funktion `handleFoodTrack` aus, sobald ein click "gehört" wird.
       button.addEventListener("click", handleFoodTrack);
     </script>
   </body>
