@@ -92,8 +92,10 @@
             const weight = input_weight.value;
             const age = input_age.value;
 
+            // Wenn das Alter kleiner als 18, soll nur eine Nachricht ausgegeben werden
             if (age < 18) {
               result_container.innerHTML = "Bitte verwenden Sie ein anderes Programm und lassen Sie ihr Kind in Ruhe!";
+              // mit return springen wir aus der Funktion und führen keine weitere Berechnung aus
               return;
             } 
 
@@ -103,6 +105,7 @@
             // Gibt das Ergebnis der Berechnung auf der Seite aus.
             result_container.innerHTML = "Sie haben einen BMI von " + bmi;
 
+            // prüft den berechneten BMI und gibt entsprechend eine Nachricht aus.
             if (bmi < 16) {
               rating_container.innerHTML = "Sie haben kritisches Untergewicht."
             } else if (bmi >= 16 && bmi < 18.5) {
