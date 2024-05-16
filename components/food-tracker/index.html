@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Tracker</title>
+  </head>
+  <body>
+    <div class="food-tracker">
+      <h2>Food-Tracker</h2>
+
+      <div class="form-inputs">
+        <div class="label-container">
+          <label for="">
+            Name
+            <input id="input_name" type="text" />
+          </label>
+        </div>
+        <div class="label-container">
+          <label>
+            Typ
+            <select name="" id="input_type">
+              <option value="Mahlzeit">Mahlzeit</option>
+              <option value="Junkfood">Junkfood</option>
+            </select>
+          </label>
+        </div>
+        <div class="label-container">
+          <label>
+            Menge
+            <input type="number" name="" id="input_amount" />
+          </label>
+        </div>
+        <button id="button_track-food">Tracken</button>
+      </div>
+
+      <div class="logbook">...</div>
+    </div>
+
+    <script>
+      // JS mit HTML-Elementen auf der Seite "verkabeln"
+      const input_name = document.querySelector("#input_name");
+      const input_type = document.querySelector("#input_type");
+      const input_amount = document.querySelector("#input_amount");
+      const button = document.querySelector("#button_track-food");
+      const logbook = document.querySelector(".logbook");
+
+      // Funktion, die ausgeführt werden soll, wenn der Button zum Speichern einer Mahlzeit geclickt wird
+      function handleFoodTrack() {
+        const name = input_name.value;
+        const type = input_type.value;
+        const amount = input_amount.value;
+
+        // holt diverse Informationen zum aktuellen Zeitpunkt und Datum
+        const currentDate = new Date();
+        // wandelt das aktuelle Datum und Zeit in einen String mit folgendem Format um: 11.05.2024 08:14:25
+        const timeOfTracking = currentDate.toLocaleString();
+
+        // speichert den alten Inhalt des Logbook in einer Variablen
+        const currentLogBook = logbook.innerHTML
+        // fügt den alten Inhalt und das gerade erfasste Mahlzeit aneinander und fügt es in das Logbook ein
+        logbook.innerHTML = currentLogBook + "<p>" + timeOfTracking + ", " + amount + ", " + type + ", " + name + "</p>";
+      }
+
+      // Der Button "lauscht" auf clicks und führt die Funktion `handleFoodTrack` aus, sobald ein click "gehört" wird.
+      button.addEventListener("click", handleFoodTrack);
+    </script>
+  </body>
+</html>
